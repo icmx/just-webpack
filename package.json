@@ -1,0 +1,13 @@
+{
+  "name": "just-webpack",
+  "version": "0.0.0",
+  "description": "Bare minimum boilerplate featuring Webpack, basic EJS templating and Sass styling, all live-reloadable",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icmx/just-webpack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/icmx/just-webpack/issues"
+  },
+  "homepage": "https://github.com/icmx/just-webpack#readme"
+}
