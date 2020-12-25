@@ -57,3 +57,7 @@ All files will be bundled into HTML, CSS and JS bundles, while assets and static
 There are lots of similar boilerplates already indeed. However, most of them are incredibly bloated by endless dependencies, which may be deprecated, outdated and even not used at all, thus I suppose there should be some really lightweight and easy to use alternative.
 
 Please note that packages choice for Just Webpack not only *bare*, but also *sane*.
+
+## See also
+
+  - [Just Gulp](https://github.com/icmx/just-gulp) — same project, but gulp-based.
