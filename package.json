@@ -1,6 +1,6 @@
 {
   "name": "just-webpack",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Bare minimum boilerplate featuring Webpack, basic EJS templating and Sass styling, all live-reloadable",
   "scripts": {
     "serve": "webpack serve --config-name serve",
@@ -24,6 +24,9 @@
   },
   "homepage": "https://github.com/icmx/just-webpack#readme",
   "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/preset-env": "^7.12.16",
+    "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.2",
