@@ -69,7 +69,7 @@ const baseConfig = {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                config: `postcss.config.js`,
+                plugins: ['postcss-csso'],
               },
             },
           },
@@ -97,7 +97,7 @@ const baseConfig = {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                config: `postcss.config.js`,
+                plugins: ['postcss-csso'],
               },
             },
           },
@@ -110,6 +110,7 @@ const baseConfig = {
       // examples for '~':
       //
       //   import { component } from '~/app/component';
+      //   import style from '~/styles/style.scss';
       //   import '~/index.scss';
       //
       '~': `${paths.src}`,
