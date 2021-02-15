@@ -34,7 +34,7 @@ const baseConfig = {
     splitChunks: {
       cacheGroups: {
         vendor: {
-          name: 'vendor',
+          name: 'vendors',
           test: /node_modules/,
           chunks: 'all',
           enforce: true,
