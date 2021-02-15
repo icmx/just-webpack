@@ -1,15 +1,14 @@
 # Just Webpack
 
-Bare minimum boilerplate featuring Webpack, basic EJS templating and Sass styling, all live-reloadable.
+Bare minimum boilerplate featuring Webpack, Babel  basic EJS templating and PostCSS styling, all live-reloadable.
 
 ## Features
 
   - Webpack as a bundler
+  - Babel transcompiler
   - Basic EJS templating
-  - Dart Sass styles preprocessing
-  - PostCSS with cssnano minification enabled
+  - PostCSS with csso minification enabled
   - Webpack Dev Server live-reloading preview
-  - Prettier project-specific editor settings
 
 ## Usage
 
@@ -37,20 +36,19 @@ All sources are in `src` directory, but any path can be easily changed in [webpa
   - `assets` — *almost-compiled* binary files like images, icon sets, fonts etc. By default it contains only `images` subdirectory.
   - `static` — ready and compiled files, like favicons, robots.txt etc.
   - `app` — application code
-  - `styles` — additional styles and other SCSS files
   - `index.html` — index file
   - `index.js` — app index file
-  - `index.scss` — styles index file
+  - `index.css` — styles index file
 
 All files will be bundled into HTML, CSS and JS bundles, while assets and static files will be just copied:
 
-| Sources (`src`)                   | Output (`dist`)                  |
-| --------------------------------- | -------------------------------- |
-| `assets/*`                        | `/assets/*`                      |
-| `static/*`                        | `/*`                             |
-| `index.html`                      | `/index.html`                    |
-| `app` (optional), `index.js`      | `/main.min.js`, `/vendor.min.js` |
-| `styles` (optional), `index.scss` | `/style.min.css`                 |
+| Sources (`src`)                  | Output (`dist`)                  |
+| -------------------------------- | -------------------------------- |
+| `assets/*`                       | `/assets/*`                      |
+| `static/*`                       | `/*`                             |
+| `index.html`                     | `/index.html`                    |
+| `app` (optional), `index.js`     | `/main.min.js`, `/vendor.min.js` |
+| `styles` (optional), `index.css` | `/style.min.css`                 |
 
 ## Motivation
 
