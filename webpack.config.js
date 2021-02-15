@@ -52,34 +52,6 @@ const baseConfig = {
         },
       },
       {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              esModule: false,
-            },
-          },
-          {
-            loader: 'css-loader',
-            options: { sourceMap: true },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: ['postcss-csso'],
-              },
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: { sourceMap: true },
-          },
-        ],
-      },
-      {
         test: /\.css$/,
         use: [
           'style-loader',
