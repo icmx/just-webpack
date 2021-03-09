@@ -1,6 +1,6 @@
 {
   "name": "just-webpack",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Bare minimum boilerplate featuring Webpack, basic EJS templating and Sass styling, all live-reloadable",
   "scripts": {
     "serve": "webpack serve --config-name serve",
