@@ -137,6 +137,17 @@ const baseConfig = {
       },
     }),
   ],
+
+  // Temporary workaround for hot reloading.
+  // See https://github.com/webpack/webpack-dev-server/issues/2758
+  //
+  // webpack-dev-server not reloading page when "browserslist" is
+  // presented in package.json, but this entry below fixing it.
+  // However this approach is incorrect (should be 'browserslist'
+  // instead of 'web', or just omitted since 'browserslist' is default).
+  //
+  // This should be removed when webpack-dev-server v4 will release.
+  target: 'web',
 };
 
 const serveConfig = merge(baseConfig, {
