@@ -1,6 +1,6 @@
 # Just Webpack
 
-Bare minimum boilerplate featuring Webpack, Babel  basic EJS templating and PostCSS styling, all live-reloadable.
+Bare minimum boilerplate featuring Webpack, Babel, basic EJS templating and PostCSS styling, all live-reloadable.
 
 ## Features
 

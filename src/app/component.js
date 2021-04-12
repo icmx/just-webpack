@@ -1,5 +1,7 @@
-export const Component = () => ({
-  get name() {
-    return 'Example';
-  },
-});
+export const Component = (name = 'unknown') => {
+  return {
+    get name() {
+      return name;
+    },
+  };
+};
