@@ -7,7 +7,7 @@ Bare minimum boilerplate featuring Webpack, Babel, basic EJS templating and Post
   - Webpack as a bundler
   - Babel transcompiler
   - Basic EJS templating
-  - PostCSS with csso minification enabled
+  - PostCSS with csso minification and "include" import enabled
   - Webpack Dev Server live-reloading preview
 
 ## Usage
