@@ -1,14 +1,15 @@
-# Just Webpack
+# 🛠️ Just Webpack
 
-Bare minimum boilerplate featuring Webpack, Babel, basic EJS templating and PostCSS styling, all live-reloadable.
+Bare minimum boilerplate featuring Webpack, Babel, basic EJS templating and PostCSS styling, all live-reloadable. Code linting and formatting are provided by ESLint and Prettier.
 
 ## Features
 
   - Webpack as a bundler
   - Babel transcompiler
   - Basic EJS templating
-  - PostCSS with csso minification and "include" import enabled
+  - PostCSS with csso minification and "include" import
   - Webpack Dev Server live-reloading preview
+  - ESLint linting and Prettier formatting for code
 
 ## Usage
 

@@ -2,7 +2,7 @@
   "name": "just-webpack",
   "version": "0.1.5",
   "private": true,
-  "description": "Bare minimum boilerplate featuring Webpack, basic EJS templating and PostCSS styling, all live-reloadable",
+  "description": "Bare minimum boilerplate featuring Webpack, basic EJS templating and PostCSS styling, all live-reloadable. Code linting and formatting are provided by ESLint and Prettier",
   "scripts": {
     "serve": "webpack serve --config-name serve",
     "pretty": "prettier --write src",
