@@ -66,7 +66,6 @@ const baseConfig = {
       {
         test: /\.css$/,
         use: [
-          'style-loader',
           {
             loader: MiniCssExtractPlugin.loader,
             options: {

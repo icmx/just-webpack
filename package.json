@@ -42,7 +42,6 @@
     "postcss-import": "^14.0.1",
     "postcss-loader": "^5.2.0",
     "prettier": "^2.3.0",
-    "style-loader": "^2.0.0",
     "webpack": "^5.31.2",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2",
