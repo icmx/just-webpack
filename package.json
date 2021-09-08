@@ -4,7 +4,7 @@
   "private": true,
   "description": "Bare minimum boilerplate featuring Webpack, basic EJS templating and PostCSS styling, all live-reloadable. Code linting and formatting are provided by ESLint and Prettier",
   "scripts": {
-    "serve": "webpack serve --config-name serve",
+    "start": "webpack serve --config-name serve",
     "pretty": "prettier --write src",
     "lint": "eslint src",
     "build": "webpack --config-name build"
