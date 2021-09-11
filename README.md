@@ -13,21 +13,28 @@ Bare minimum boilerplate featuring Webpack, Babel, basic EJS templating and Post
 
 ## Usage
 
+Clone this repository:
+
 ```sh
-# clone repository
 git clone https://github.com/icmx/just-webpack
+```
 
-# go to local copy
+Go to local saved copy:
+
+```sh
 cd just-webpack
+```
 
-# install dependencies
+Install dependencies:
+
+```sh
 npm install
+```
 
-# launch it on localhost:1337 -- happy coding!
-npm run serve
+Launch it on [localhost:1337](http://localhost:1337/) — happy coding!
 
-# build it
-npm run build
+```sh
+npm run start
 ```
 
 ## Structure
@@ -53,9 +60,9 @@ All files will be bundled into HTML, CSS and JS bundles, while assets and static
 
 ## Motivation
 
-There are lots of similar boilerplates already indeed. However, most of them are incredibly bloated by endless dependencies, which may be deprecated, outdated and even not used at all, thus I suppose there should be some really lightweight and easy to use alternative.
+There are lots of similar boilerplates already indeed. However, most of them are incredibly bloated by endless dependencies, which may be deprecated, outdated and not even used at all, thus I suppose there should be some really lightweight and easy to use alternative.
 
-Please note that packages choice for Just Webpack not only *bare*, but also *sane*.
+Please note that packages choice for Just Webpack not only *bare*, but also *sane* — this project is not about making it as small as possible.
 
 ## See also
 
