@@ -34,7 +34,7 @@ npm install
 Launch it on [localhost:1337](http://localhost:1337/) — happy coding!
 
 ```sh
-npm run start
+npm run watch
 ```
 
 ## Structure

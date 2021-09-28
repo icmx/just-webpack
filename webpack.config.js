@@ -8,23 +8,26 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const package = require('./package.json');
-
-const paths = {
-  src: path.join(__dirname, `src`),
-  dist: path.join(__dirname, `dist`),
-  assets: `assets`,
+const pathsNames = {
+  src: 'src',
+  dist: 'dist',
+  assets: 'assets',
+  static: 'static',
 };
 
-const baseConfig = {
-  externals: {
-    paths: paths,
-  },
+const paths = {
+  src: path.join(__dirname, pathsNames.src),
+  dist: path.join(__dirname, pathsNames.dist),
+  assets: path.join(__dirname, pathsNames.src, pathsNames.assets),
+  static: path.join(__dirname, pathsNames.src, pathsNames.static),
+};
+
+const createBaseConfig = (configPaths, meta) => ({
   entry: {
-    app: paths.src,
+    app: `${configPaths.src}`,
   },
   output: {
-    filename: `[name].min.js`,
+    filename: `[name].js`,
     // filename: `[name].[contenthash].min.js`,
     path: paths.dist,
     publicPath: '/', // relative to dist
@@ -96,6 +99,7 @@ const baseConfig = {
     ],
   },
   resolve: {
+    extensions: ['.js'],
     alias: {
       // examples for '~':
       //
@@ -103,71 +107,75 @@ const baseConfig = {
       //   import style from '~/styles/style.scss';
       //   import '~/index.scss';
       //
-      '~': `${paths.src}`,
+      '~': `${configPaths.src}`,
     },
   },
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].min.css',
+      filename: '[name].css',
       // filename: '[name].[contenthash].min.css',
     }),
-
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: `${paths.src}/${paths.assets}/images`,
-          to: `${paths.assets}/images`,
+          from: `${configPaths.assets}`,
+          to: `${configPaths.assets.split(path.sep).slice(-1)[0]}`,
+          noErrorOnMissing: true,
         },
-
         {
-          from: `${paths.src}/static`,
+          from: `${configPaths.static}`,
           to: '',
+          noErrorOnMissing: true,
         },
       ],
     }),
-
     new HtmlWebpackPlugin({
-      template: `${paths.src}/index.html`,
-      filename: `./index.html`,
+      template: `${configPaths.src}/index.html`,
+      filename: `index.html`,
       templateParameters: {
-        version: package.version,
-        license: package.license,
+        version: meta.version,
+        license: meta.license,
       },
-    }),
-  ],
-};
-
-const serveConfig = merge(baseConfig, {
-  name: 'serve',
-  mode: 'development',
-  devtool: 'cheap-module-source-map',
-  devServer: {
-    port: 1337,
-    liveReload: true,
-    watchFiles: ['./src/**/*'],
-    static: {
-      publicPath: '/',
-      directory: baseConfig.externals.paths.dist,
-    },
-    client: {
-      overlay: {
-        warnings: true,
-        errors: true,
-      },
-    },
-  },
-  plugins: [
-    new webpack.SourceMapDevToolPlugin({
-      filename: '[file].map',
     }),
   ],
 });
 
-const buildConfig = merge(baseConfig, {
-  name: 'build',
-  mode: 'production',
-  plugins: [],
-});
+const createWatchConfig = (configPaths, meta) =>
+  merge(createBaseConfig(configPaths, meta), {
+    name: 'watch',
+    mode: 'development',
+    devtool: 'cheap-module-source-map',
+    devServer: {
+      port: 1337,
+      liveReload: true,
+      watchFiles: [`${configPaths.src}/**/*`],
+      static: {
+        publicPath: '/',
+        directory: `${configPaths.dist}`,
+      },
+      client: {
+        overlay: {
+          warnings: true,
+          errors: true,
+        },
+      },
+    },
+    plugins: [
+      new webpack.SourceMapDevToolPlugin({
+        filename: '[file].map',
+      }),
+    ],
+  });
 
-module.exports = [serveConfig, buildConfig];
+const createBuildConfig = (configPaths, meta) =>
+  merge(createBaseConfig(configPaths, meta), {
+    name: 'build',
+    mode: 'production',
+    plugins: [],
+  });
+
+module.exports = [
+  createWatchConfig(paths, require('./package.json')),
+  createBuildConfig(paths, require('./package.json')),
+];
