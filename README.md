@@ -67,4 +67,4 @@ Please note that packages choice for Just Webpack not only *bare*, but also *san
 ## See also
 
   - [Just Gulp](https://github.com/icmx/just-gulp) — same project, but gulp-based.
-  - [Just Monorepo](https://github.com/icmx/just-monorepo) — minimal monorepository build with NPM workspaces
+  - [Just Monorepo](https://github.com/icmx/just-monorepo) — minimal monorepository boilerplate built with NPM workspaces
