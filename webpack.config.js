@@ -8,23 +8,23 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const pathsNames = {
+const NAMES = {
   src: 'src',
   dist: 'dist',
   assets: 'assets',
   static: 'static',
 };
 
-const paths = {
-  src: path.join(__dirname, pathsNames.src),
-  dist: path.join(__dirname, pathsNames.dist),
-  assets: path.join(__dirname, pathsNames.src, pathsNames.assets),
-  static: path.join(__dirname, pathsNames.src, pathsNames.static),
+const PATHS = {
+  src: path.join(__dirname, NAMES.src),
+  dist: path.join(__dirname, NAMES.dist),
+  assets: path.join(__dirname, NAMES.src, NAMES.assets),
+  static: path.join(__dirname, NAMES.src, NAMES.static),
 };
 
-const createBaseConfig = (configPaths, meta) => ({
+const createBaseConfig = ({ paths, meta }) => ({
   entry: {
-    app: `${configPaths.src}`,
+    app: `${paths.src}`,
   },
   output: {
     filename: `[name].js`,
@@ -107,7 +107,7 @@ const createBaseConfig = (configPaths, meta) => ({
       //   import style from '~/styles/style.scss';
       //   import '~/index.scss';
       //
-      '~': `${configPaths.src}`,
+      '~': `${paths.src}`,
     },
   },
   plugins: [
@@ -119,19 +119,19 @@ const createBaseConfig = (configPaths, meta) => ({
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: `${configPaths.assets}`,
-          to: `${configPaths.assets.split(path.sep).slice(-1)[0]}`,
+          from: `${paths.assets}`,
+          to: `${paths.assets.split(path.sep).slice(-1)[0]}`,
           noErrorOnMissing: true,
         },
         {
-          from: `${configPaths.static}`,
+          from: `${paths.static}`,
           to: '',
           noErrorOnMissing: true,
         },
       ],
     }),
     new HtmlWebpackPlugin({
-      template: `${configPaths.src}/index.html`,
+      template: `${paths.src}/index.html`,
       filename: `index.html`,
       templateParameters: {
         version: meta.version,
@@ -141,18 +141,18 @@ const createBaseConfig = (configPaths, meta) => ({
   ],
 });
 
-const createWatchConfig = (configPaths, meta) =>
-  merge(createBaseConfig(configPaths, meta), {
+const createWatchConfig = ({ paths, meta, port }) =>
+  merge(createBaseConfig({ paths, meta }), {
     name: 'watch',
     mode: 'development',
     devtool: 'cheap-module-source-map',
     devServer: {
-      port: 1337,
+      port,
       liveReload: true,
-      watchFiles: [`${configPaths.src}/**/*`],
+      watchFiles: [`${paths.src}/**/*`],
       static: {
         publicPath: '/',
-        directory: `${configPaths.dist}`,
+        directory: `${paths.dist}`,
       },
       client: {
         overlay: {
@@ -168,14 +168,18 @@ const createWatchConfig = (configPaths, meta) =>
     ],
   });
 
-const createBuildConfig = (configPaths, meta) =>
-  merge(createBaseConfig(configPaths, meta), {
+const createBuildConfig = ({ paths, meta }) =>
+  merge(createBaseConfig({ paths, meta }), {
     name: 'build',
     mode: 'production',
     plugins: [],
   });
 
 module.exports = [
-  createWatchConfig(paths, require('./package.json')),
-  createBuildConfig(paths, require('./package.json')),
+  createWatchConfig({
+    paths: PATHS,
+    meta: require('./package.json'),
+    port: 1337,
+  }),
+  createBuildConfig({ paths: PATHS, meta: require('./package.json') }),
 ];
