@@ -48,22 +48,9 @@ const createBaseConfig = ({ paths, meta }) => ({
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              [
-                '@babel/preset-env',
-                {
-                  targets: { esmodules: true },
-                  bugfixes: true,
-                  shippedProposals: true,
-                },
-              ],
-            ],
-          },
+        test: /\.js/,
+        resolve: {
+          fullySpecified: false,
         },
       },
       {
