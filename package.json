@@ -26,18 +26,18 @@
   "homepage": "https://github.com/icmx/just-webpack#readme",
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
-    "copy-webpack-plugin": "^11.0.0",
-    "css-loader": "^6.7.3",
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^7.1.2",
     "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.5.0",
-    "mini-css-extract-plugin": "^2.7.2",
+    "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
     "postcss-csso": "^6.0.1",
-    "postcss-import": "^15.1.0",
-    "postcss-loader": "^7.0.2",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.11.1",
-    "webpack-merge": "^5.8.0"
+    "postcss-import": "^16.1.0",
+    "postcss-loader": "^8.1.1",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0",
+    "webpack-merge": "^6.0.1"
   },
   "browserslist": [
     "> 0.5%",
