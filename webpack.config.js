@@ -6,7 +6,6 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import project from './package.json' assert { type: 'json' };
 
 const { SourceMapDevToolPlugin } = webpack;
 
@@ -27,7 +26,7 @@ const PATHS = {
   static: join(__dirname, NAMES.src, NAMES.static),
 };
 
-const createBaseConfig = ({ paths, meta }) => ({
+const createBaseConfig = ({ paths }) => ({
   entry: {
     app: `${paths.src}`,
   },
@@ -125,16 +124,12 @@ const createBaseConfig = ({ paths, meta }) => ({
     new HtmlWebpackPlugin({
       template: `${paths.src}/index.html`,
       filename: `index.html`,
-      templateParameters: {
-        version: meta.version,
-        license: meta.license,
-      },
     }),
   ],
 });
 
-const createWatchConfig = ({ paths, meta, port }) =>
-  merge(createBaseConfig({ paths, meta }), {
+const createWatchConfig = ({ paths, port }) =>
+  merge(createBaseConfig({ paths }), {
     name: 'watch',
     mode: 'development',
     devtool: 'cheap-module-source-map',
@@ -160,18 +155,14 @@ const createWatchConfig = ({ paths, meta, port }) =>
     ],
   });
 
-const createBuildConfig = ({ paths, meta }) =>
-  merge(createBaseConfig({ paths, meta }), {
+const createBuildConfig = ({ paths }) =>
+  merge(createBaseConfig({ paths }), {
     name: 'build',
     mode: 'production',
     plugins: [],
   });
 
 export default [
-  createWatchConfig({
-    paths: PATHS,
-    meta: project,
-    port: 1337,
-  }),
-  createBuildConfig({ paths: PATHS, meta: project }),
+  createWatchConfig({ paths: PATHS, port: 1337 }),
+  createBuildConfig({ paths: PATHS }),
 ];

@@ -5,7 +5,7 @@ Bare minimum boilerplate featuring Webpack, EJS and PostCSS, all live-reloadable
 ## Features
 
   - Webpack as a bundler
-  - Basic EJS templating
+  - Basic EJS templating (HtmlWebpackPlugin)
   - PostCSS with csso minification and "include" import
   - Webpack Dev Server live-reloading preview
 
