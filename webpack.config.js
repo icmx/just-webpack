@@ -74,7 +74,7 @@ const createBaseConfig = ({ paths }) => ({
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: ['postcss-import', 'postcss-csso'],
+                plugins: ['postcss-import', 'cssnano'],
               },
             },
           },
