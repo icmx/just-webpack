@@ -1,12 +1,17 @@
-const path = require('path');
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+import webpack from 'webpack';
+import { merge } from 'webpack-merge';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import project from './package.json' assert { type: 'json' };
 
-const webpack = require('webpack');
-const { merge } = require('webpack-merge');
+const { SourceMapDevToolPlugin } = webpack;
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const NAMES = {
   src: 'src',
@@ -16,10 +21,10 @@ const NAMES = {
 };
 
 const PATHS = {
-  src: path.join(__dirname, NAMES.src),
-  dist: path.join(__dirname, NAMES.dist),
-  assets: path.join(__dirname, NAMES.src, NAMES.assets),
-  static: path.join(__dirname, NAMES.src, NAMES.static),
+  src: join(__dirname, NAMES.src),
+  dist: join(__dirname, NAMES.dist),
+  assets: join(__dirname, NAMES.src, NAMES.assets),
+  static: join(__dirname, NAMES.src, NAMES.static),
 };
 
 const createBaseConfig = ({ paths, meta }) => ({
@@ -107,7 +112,7 @@ const createBaseConfig = ({ paths, meta }) => ({
       patterns: [
         {
           from: `${paths.assets}`,
-          to: `${paths.assets.split(path.sep).slice(-1)[0]}`,
+          to: `${paths.assets.split(/\/|\\/).slice(-1)[0]}`,
           noErrorOnMissing: true,
         },
         {
@@ -149,7 +154,7 @@ const createWatchConfig = ({ paths, meta, port }) =>
       },
     },
     plugins: [
-      new webpack.SourceMapDevToolPlugin({
+      new SourceMapDevToolPlugin({
         filename: '[file].map',
       }),
     ],
@@ -162,11 +167,11 @@ const createBuildConfig = ({ paths, meta }) =>
     plugins: [],
   });
 
-module.exports = [
+export default [
   createWatchConfig({
     paths: PATHS,
-    meta: require('./package.json'),
+    meta: project,
     port: 1337,
   }),
-  createBuildConfig({ paths: PATHS, meta: require('./package.json') }),
+  createBuildConfig({ paths: PATHS, meta: project }),
 ];

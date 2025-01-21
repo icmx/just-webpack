@@ -1,5 +1,6 @@
 {
   "name": "just-webpack",
+  "type": "module",
   "version": "0.1.9",
   "private": true,
   "description": "Bare minimum boilerplate featuring Webpack, EJS and PostCSS, all live-reloadable",
