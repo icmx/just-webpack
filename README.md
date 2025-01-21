@@ -1,5 +1,9 @@
 # 🛠️ Just Webpack
 
+> Outdated
+>
+> This project uses outdated technologies and is not recommended for use in modern development.
+
 Bare minimum boilerplate featuring Webpack, EJS and PostCSS, all live-reloadable.
 
 ## Features
